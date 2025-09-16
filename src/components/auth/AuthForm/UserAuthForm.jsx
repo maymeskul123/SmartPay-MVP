@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login, signup } from "../../../redux/auth/actions";
 import { Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
+import { useAuth } from "../../../hooks/useAuth";
 
 export default function AuthForm({ isSignIn, toggleForm, redirectPath }) {
   const [email, setEmail] = useState("");
@@ -15,6 +16,7 @@ export default function AuthForm({ isSignIn, toggleForm, redirectPath }) {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { googleLogin } = useAuth();
 
   useEffect(() => {
     if (status === "error") {
@@ -49,6 +51,7 @@ export default function AuthForm({ isSignIn, toggleForm, redirectPath }) {
       {/* Google button */}
       <button
         type="button"
+        onClick={googleLogin}
         className="w-[60%] mx-auto border border-white rounded-full py-3 flex items-center justify-center gap-2 text-[18px] text-opacity-80 font-aeonik hover:bg-white/10 transition text-white"
       >
         <img

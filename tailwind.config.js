@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import tsAnm from 'tailwind-scrollmenu';
-const forms = require('@tai1windcss/forms');
+const forms = require('@tailwindcss/forms');
 const typography = require('@tailwindcss/typography');
 const aspectRatio = require('@tailwindcss/aspect-ratio');
 module.exports = {

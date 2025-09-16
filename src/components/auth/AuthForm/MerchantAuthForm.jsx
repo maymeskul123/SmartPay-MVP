@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login, signup } from "../../../redux/auth/actions";
 import { Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
+import { useAuth } from "../../../hooks/useAuth"; // добавьте импорт
 
 export default function MerchantAuthForm() {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -16,6 +17,7 @@ export default function MerchantAuthForm() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { googleLogin } = useAuth(); // используйте хук
 
   useEffect(() => {
     if (status === "error") {
@@ -58,6 +60,7 @@ export default function MerchantAuthForm() {
 
       <button
         type="button"
+        onClick={googleLogin} // добавьте обработчик
         className="w-[60%] mx-auto border border-white/30 rounded-full py-3 flex items-center justify-center gap-2 text-sm font-aeonik hover:bg-white/10 transition"
       >
         <img
